@@ -33,8 +33,64 @@ export const metadata: Metadata = {
 };
 
 export default function PdfCompressorPage() {
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'SoftwareApplication',
+        'name': 'Online PDF Compressor & File Size Reducer',
+        'url': 'https://utilixa.in/pdf-compressor',
+        'applicationCategory': 'UtilitiesApplication',
+        'operatingSystem': 'All',
+        'description':
+          'Compress PDF documents directly in your web browser. Set custom KB size targets (100KB, 200KB, 500KB) for job portal uploads, government forms, and email attachments while preserving visual quality.',
+        'offers': {
+          '@type': 'Offer',
+          'price': '0',
+          'priceCurrency': 'INR',
+        },
+      },
+      {
+        '@type': 'FAQPage',
+        'mainEntity': [
+          {
+            '@type': 'Question',
+            'name': 'Will PDF compression blur or corrupt document text?',
+            'acceptedAnswer': {
+              '@type': 'Answer',
+              'text':
+                'No, vector fonts and text elements remain crisp and readable. Compression primarily optimizes high-resolution embedded images and metadata structure inside the PDF.',
+            },
+          },
+          {
+            '@type': 'Question',
+            'name': 'Is there any document page limit or watermark added?',
+            'acceptedAnswer': {
+              '@type': 'Answer',
+              'text':
+                'No! Utilixa is 100% free with zero watermarks, zero page limits, and zero registration requirements.',
+            },
+          },
+          {
+            '@type': 'Question',
+            'name': 'Are my confidential PDF documents safe?',
+            'acceptedAnswer': {
+              '@type': 'Answer',
+              'text':
+                'Yes. PDF processing is executed locally inside your device browser memory. Files are never uploaded or saved on any external servers.',
+            },
+          },
+        ],
+      },
+    ],
+  };
+
   return (
     <div className="min-h-screen flex flex-col justify-between">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Header />
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-20 w-full space-y-10">

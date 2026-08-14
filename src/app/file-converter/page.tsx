@@ -33,8 +33,64 @@ export const metadata: Metadata = {
 };
 
 export default function FileConverterPage() {
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'SoftwareApplication',
+        'name': 'Advanced File & Data Format Converter',
+        'url': 'https://utilixa.in/file-converter',
+        'applicationCategory': 'UtilitiesApplication',
+        'operatingSystem': 'All',
+        'description':
+          'Convert between JPG, PNG, WebP, GIF, SVG, BMP image formats, or transform tabular CSV data to JSON and vice versa with 100% lossy/lossless quality controls.',
+        'offers': {
+          '@type': 'Offer',
+          'price': '0',
+          'priceCurrency': 'INR',
+        },
+      },
+      {
+        '@type': 'FAQPage',
+        'mainEntity': [
+          {
+            '@type': 'Question',
+            'name': 'What file formats can I convert using Utilixa?',
+            'acceptedAnswer': {
+              '@type': 'Answer',
+              'text':
+                'You can convert between major image formats including PNG, JPG, WebP, GIF, SVG, and BMP. For web developers and data analysts, we also support instant two-way CSV to JSON and JSON to CSV conversions.',
+            },
+          },
+          {
+            '@type': 'Question',
+            'name': 'Are my files uploaded to any external server?',
+            'acceptedAnswer': {
+              '@type': 'Answer',
+              'text':
+                'No, conversion runs 100% inside your web browser’s memory using JavaScript APIs. Your documents and photos never leave your device.',
+            },
+          },
+          {
+            '@type': 'Question',
+            'name': 'Is there any restriction on file conversion size?',
+            'acceptedAnswer': {
+              '@type': 'Answer',
+              'text':
+                'Since conversion uses your local browser memory, you can convert files as large as your device hardware permits without queue times or server throttles.',
+            },
+          },
+        ],
+      },
+    ],
+  };
+
   return (
     <div className="min-h-screen flex flex-col justify-between">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Header />
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-20 w-full space-y-10">

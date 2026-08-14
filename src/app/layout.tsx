@@ -57,17 +57,36 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'WebApplication',
-    name: 'Utilixa',
-    url: 'https://utilixa.in',
-    description: 'Free client-side web application suite for image compression, file format conversion, financial loan EMI calculation, and PDF optimization.',
-    applicationCategory: 'UtilityApplication',
-    operatingSystem: 'All',
-    offers: {
-      '@type': 'Offer',
-      price: '0',
-      priceCurrency: 'USD',
-    },
+    '@graph': [
+      {
+        '@type': 'WebApplication',
+        '@id': 'https://utilixa.in/#webapp',
+        'name': 'Utilixa',
+        'url': 'https://utilixa.in',
+        'applicationCategory': 'UtilitiesApplication',
+        'operatingSystem': 'All',
+        'description':
+          'Free, fast, client-side utility tools including image compressor, PDF converter, EMI and age calculator.',
+        'offers': {
+          '@type': 'Offer',
+          'price': '0',
+          'priceCurrency': 'INR',
+        },
+        'publisher': {
+          '@type': 'Organization',
+          'name': 'Utilixa',
+          'url': 'https://utilixa.in',
+        },
+      },
+      {
+        '@type': 'WebSite',
+        '@id': 'https://utilixa.in/#website',
+        'url': 'https://utilixa.in',
+        'name': 'Utilixa',
+        'description':
+          'Free client-side web application suite for image compression, file format conversion, financial loan EMI calculation, and PDF optimization.',
+      },
+    ],
   };
 
   return (

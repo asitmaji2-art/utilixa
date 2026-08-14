@@ -33,8 +33,64 @@ export const metadata: Metadata = {
 };
 
 export default function AgeCalculatorPage() {
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'SoftwareApplication',
+        'name': 'Exact Age & Birthday Calculator',
+        'url': 'https://utilixa.in/age-calculator',
+        'applicationCategory': 'UtilitiesApplication',
+        'operatingSystem': 'All',
+        'description':
+          'Determine your exact age down to years, months, days, hours, and minutes. Calculates total days lived, next birthday countdown timer, day of the week born, and western Zodiac sign.',
+        'offers': {
+          '@type': 'Offer',
+          'price': '0',
+          'priceCurrency': 'INR',
+        },
+      },
+      {
+        '@type': 'FAQPage',
+        'mainEntity': [
+          {
+            '@type': 'Question',
+            'name': 'How accurate is this exact age calculator?',
+            'acceptedAnswer': {
+              '@type': 'Answer',
+              'text':
+                'Our calculator accounts for leap years, varying month lengths (28, 30, or 31 days), and precise calendar boundaries to ensure 100% mathematical accuracy.',
+            },
+          },
+          {
+            '@type': 'Question',
+            'name': 'Does it show my next birthday countdown and Zodiac sign?',
+            'acceptedAnswer': {
+              '@type': 'Answer',
+              'text':
+                'Yes! It reveals how many days remain until your next birthday and automatically detects your western Zodiac sign (e.g., Aries, Leo, Scorpio).',
+            },
+          },
+          {
+            '@type': 'Question',
+            'name': 'Can I calculate my age on a specific future or past date?',
+            'acceptedAnswer': {
+              '@type': 'Answer',
+              'text':
+                'Yes, simply pick any future or historical date in the target date picker to calculate your age at that exact point in time.',
+            },
+          },
+        ],
+      },
+    ],
+  };
+
   return (
     <div className="min-h-screen flex flex-col justify-between">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Header />
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-20 w-full space-y-10">

@@ -33,8 +33,64 @@ export const metadata: Metadata = {
 };
 
 export default function QrBarcodeGeneratorPage() {
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'SoftwareApplication',
+        'name': 'Custom QR Code & Barcode Generator',
+        'url': 'https://utilixa.in/qr-barcode-generator',
+        'applicationCategory': 'UtilitiesApplication',
+        'operatingSystem': 'All',
+        'description':
+          'Create static QR codes for website URLs, Wi-Fi network credentials, plain text, emails, and vCard contacts. Customize background and foreground colors and export crisp vector SVG or HD PNG images.',
+        'offers': {
+          '@type': 'Offer',
+          'price': '0',
+          'priceCurrency': 'INR',
+        },
+      },
+      {
+        '@type': 'FAQPage',
+        'mainEntity': [
+          {
+            '@type': 'Question',
+            'name': 'Do these generated QR codes ever expire or have scan limits?',
+            'acceptedAnswer': {
+              '@type': 'Answer',
+              'text':
+                'No! The generated QR codes encode static data directly into the matrix pattern and remain active forever with zero scan restrictions.',
+            },
+          },
+          {
+            '@type': 'Question',
+            'name': 'Can I generate Wi-Fi QR codes for seamless guest connections?',
+            'acceptedAnswer': {
+              '@type': 'Answer',
+              'text':
+                'Yes! Select Wi-Fi mode, enter your SSID network name and security password, and guests can scan to connect instantly without typing passwords.',
+            },
+          },
+          {
+            '@type': 'Question',
+            'name': 'Is high-res vector SVG format supported for commercial printing?',
+            'acceptedAnswer': {
+              '@type': 'Answer',
+              'text':
+                'Yes, download scalable SVG vector files that retain sharp vector line resolution at any print dimension (business cards, banners, signages).',
+            },
+          },
+        ],
+      },
+    ],
+  };
+
   return (
     <div className="min-h-screen flex flex-col justify-between">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Header />
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-20 w-full space-y-10">

@@ -32,8 +32,64 @@ export const metadata: Metadata = {
 };
 
 export default function ImageCropZoomPage() {
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'SoftwareApplication',
+        'name': 'Freeform Image Crop, Zoom & Rotate Tool',
+        'url': 'https://utilixa.in/image-crop-zoom',
+        'applicationCategory': 'MultimediaApplication',
+        'operatingSystem': 'All',
+        'description':
+          'Interactive browser-based photo editor. Drag unconstrained freeform crop handles, pick aspect ratios (1:1, 3:4 Passport, 16:9), adjust zoom slider, rotate 90°, and flip images.',
+        'offers': {
+          '@type': 'Offer',
+          'price': '0',
+          'priceCurrency': 'INR',
+        },
+      },
+      {
+        '@type': 'FAQPage',
+        'mainEntity': [
+          {
+            '@type': 'Question',
+            'name': 'Can I crop photos for passport and visa applications?',
+            'acceptedAnswer': {
+              '@type': 'Answer',
+              'text':
+                'Yes! Utilize the 3:4 Passport / Visa preset ratio or 1:1 square ratio to accurately crop photos according to official document requirements.',
+            },
+          },
+          {
+            '@type': 'Question',
+            'name': 'Does cropping or zooming degrade original image quality?',
+            'acceptedAnswer': {
+              '@type': 'Answer',
+              'text':
+                'Utilixa renders canvas output at high hardware pixel density, ensuring cropped images remain sharp and clear.',
+            },
+          },
+          {
+            '@type': 'Question',
+            'name': 'Can I rotate or mirror my image before cropping?',
+            'acceptedAnswer': {
+              '@type': 'Answer',
+              'text':
+                'Yes, full 90-degree clockwise rotation and horizontal/vertical flip controls are fully integrated into the editor.',
+            },
+          },
+        ],
+      },
+    ],
+  };
+
   return (
     <div className="min-h-screen flex flex-col justify-between">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Header />
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-20 w-full space-y-10">

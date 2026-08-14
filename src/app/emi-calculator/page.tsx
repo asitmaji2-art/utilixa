@@ -33,8 +33,64 @@ export const metadata: Metadata = {
 };
 
 export default function EmiCalculatorPage() {
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'SoftwareApplication',
+        'name': 'Financial EMI Loan Calculator in ₹ (INR)',
+        'url': 'https://utilixa.in/emi-calculator',
+        'applicationCategory': 'FinanceApplication',
+        'operatingSystem': 'All',
+        'description':
+          'Calculate home loan, personal loan, or car loan monthly EMIs formatted in Indian Rupees (₹). Features interactive loan sliders, principal vs interest donut charts, and complete amortized monthly schedule tables.',
+        'offers': {
+          '@type': 'Offer',
+          'price': '0',
+          'priceCurrency': 'INR',
+        },
+      },
+      {
+        '@type': 'FAQPage',
+        'mainEntity': [
+          {
+            '@type': 'Question',
+            'name': 'What mathematical formula is used to calculate EMI?',
+            'acceptedAnswer': {
+              '@type': 'Answer',
+              'text':
+                'Utilixa uses the standard banking EMI formula: E = P × r × (1+r)^n / ((1+r)^n - 1), where P is Principal Loan Amount, r is Monthly Interest Rate, and n is total monthly tenure.',
+            },
+          },
+          {
+            '@type': 'Question',
+            'name': 'Can I use this for home, car, and personal loans in India?',
+            'acceptedAnswer': {
+              '@type': 'Answer',
+              'text':
+                'Yes! This financial calculator supports home loans, car loans, personal loans, education loans, and mortgage calculations formatted in Indian currency system (₹ Lakhs & Crores).',
+            },
+          },
+          {
+            '@type': 'Question',
+            'name': 'How does the monthly repayment schedule table work?',
+            'acceptedAnswer': {
+              '@type': 'Answer',
+              'text':
+                'The schedule table displays a month-by-month amortization breakdown showing exact principal paid, interest paid, and remaining loan balance for every single payment period.',
+            },
+          },
+        ],
+      },
+    ],
+  };
+
   return (
     <div className="min-h-screen flex flex-col justify-between">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Header />
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-20 w-full space-y-10">

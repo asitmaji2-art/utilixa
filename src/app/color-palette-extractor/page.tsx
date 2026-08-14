@@ -32,8 +32,64 @@ export const metadata: Metadata = {
 };
 
 export default function ColorPaletteExtractorPage() {
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'SoftwareApplication',
+        'name': 'Image Color Palette Extractor',
+        'url': 'https://utilixa.in/color-palette-extractor',
+        'applicationCategory': 'MultimediaApplication',
+        'operatingSystem': 'All',
+        'description':
+          'Upload any photo or digital artwork to automatically extract dominant color palettes, complementary HEX codes, and RGB values with instant 1-click clipboard copying.',
+        'offers': {
+          '@type': 'Offer',
+          'price': '0',
+          'priceCurrency': 'INR',
+        },
+      },
+      {
+        '@type': 'FAQPage',
+        'mainEntity': [
+          {
+            '@type': 'Question',
+            'name': 'How many dominant colors are extracted per photo?',
+            'acceptedAnswer': {
+              '@type': 'Answer',
+              'text':
+                'The extractor analyzes key color tones and produces primary dominant shades as well as complementary secondary accent swatches.',
+            },
+          },
+          {
+            '@type': 'Question',
+            'name': 'What color code formats are generated?',
+            'acceptedAnswer': {
+              '@type': 'Answer',
+              'text':
+                'You get standard 6-digit HEX codes (e.g. #0044FF) and RGB values compatible with TailwindCSS, Figma, Adobe XD, and web stylesheets.',
+            },
+          },
+          {
+            '@type': 'Question',
+            'name': 'Is my uploaded graphic kept private?',
+            'acceptedAnswer': {
+              '@type': 'Answer',
+              'text':
+                'Yes, pixel analysis takes place directly inside your web browser’s Canvas element without sending data to any external server.',
+            },
+          },
+        ],
+      },
+    ],
+  };
+
   return (
     <div className="min-h-screen flex flex-col justify-between">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Header />
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-20 w-full space-y-10">

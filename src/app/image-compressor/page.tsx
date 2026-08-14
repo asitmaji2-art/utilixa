@@ -33,8 +33,65 @@ export const metadata: Metadata = {
 };
 
 export default function ImageCompressorPage() {
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'SoftwareApplication',
+        'name': 'Online Image Compressor & Resizer',
+        'url': 'https://utilixa.in/image-compressor',
+        'applicationCategory': 'MultimediaApplication',
+        'operatingSystem': 'All',
+        'description':
+          'Compress PNG, JPEG, WebP, and GIF images to an exact target file size (e.g., 20KB, 50KB, 100KB) for government forms, job portals, and passport applications with 100% browser-based privacy.',
+        'offers': {
+          '@type': 'Offer',
+          'price': '0',
+          'priceCurrency': 'INR',
+        },
+      },
+      {
+        '@type': 'FAQPage',
+        'mainEntity': [
+          {
+            '@type': 'Question',
+            'name': 'How does client-side image compression work?',
+            'acceptedAnswer': {
+              '@type': 'Answer',
+              'text':
+                'All image compression processes take place inside your browser’s HTML5 canvas engine. Your images are never uploaded to any remote server or third-party cloud storage, guaranteeing 100% privacy and lightning-fast speeds.',
+            },
+          },
+          {
+            '@type': 'Question',
+            'name': 'Can I compress images to an exact target file size like 50KB or 20KB?',
+            'acceptedAnswer': {
+              '@type': 'Answer',
+              'text':
+                'Yes! Enter your exact required file size in KB (such as 20 KB for official signature uploads or 50 KB for passport forms). Utilixa automatically calculates the exact quality threshold to match your specified size.',
+            },
+          },
+          {
+            '@type': 'Question',
+            'name': 'Is my uploaded image data secure and private?',
+            'acceptedAnswer': {
+              '@type': 'Answer',
+              'text':
+                'Absolutely. Because processing happens locally in your device memory, no third party—including Utilixa—can access or store your sensitive personal images.',
+            },
+          },
+        ],
+      },
+    ],
+  };
+
   return (
     <div className="min-h-screen flex flex-col justify-between">
+      {/* Subpage Specific JSON-LD Schema Markup */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Header />
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-20 w-full space-y-10">
